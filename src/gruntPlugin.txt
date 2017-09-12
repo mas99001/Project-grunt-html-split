@@ -1,0 +1,56 @@
+    var data = fs.readdirSync(options.src);
+      if(options.wildcard == '*.html'){
+        var wc = ".html";
+        data.forEach(function(element) {
+          if(element.includes(wc))
+            console.log(element);
+          }, this);        
+      }
+      if(options.wildcard == '*'){
+        data.forEach(function(element) {
+            console.log(element);
+          }, this);        
+      }
+if(options.wildcard == '**/*.html'){
+        console.log("I am in **/*.html");
+        var dirs = options.src;
+        var filelists = [];
+
+        var walkSync = function(dir, filelist) {
+          var files = fs.readdirSync(dir);
+          filelist = filelist || [];
+          files.forEach(function(file) {
+              if (fs.statSync(dir + '/' + file).isDirectory()) {
+                  filelist.push(walkSync(dir + '/' + file, []));
+              }
+              else {
+                if (file.includes(".html")) 
+                  filelist.push(dir+'/'+file); 
+              }
+          });
+          return filelist;
+        };
+        console.log(walkSync(dirs,filelists));
+      }
+      if(options.wildcard == '**/*.js'){
+        console.log("I am in **/*.js");
+        var dirs = options.src;
+        var filelists = [];
+
+        var walkSync = function(dir, filelist) {
+          var files = fs.readdirSync(dir);
+          filelist = filelist || [];
+          files.forEach(function(file) {
+              if (fs.statSync(dir + '/' + file).isDirectory()) {
+                  filelist.push(walkSync(dir + '/' + file, []));
+              }
+              else {
+                if (file.includes(".js")) 
+                  filelist.push(dir+'/'+file); 
+              }
+          });
+          return filelist;
+        };
+        console.log(walkSync(dirs,filelists));
+      }
+      

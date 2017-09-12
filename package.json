@@ -1,0 +1,12 @@
+{
+  "name": "my-akp-test",
+  "version": "0.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-html-split": "^1.0.1"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  }
+}
