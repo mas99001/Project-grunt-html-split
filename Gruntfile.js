@@ -8,7 +8,8 @@ module.exports = function (grunt) {
             dest: "destination/paterns-par",
             wildcard: "**/*.html",
             handler: "<!--DS22SD-->",
-            filenameSuffixHandler: "<html-split-title>"
+            filenameSuffixPreHandler: "<html-split-title>",
+            filenameSuffixPostHandler: "</html-split-title>"
           },
           files: {
             'dest/default_options': ['src/srcfile', 'src/123'],
